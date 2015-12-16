@@ -1,0 +1,133 @@
+
+paths:
+    NodeList: /node/_list
+    MedHistory: /node/PS/55
+    Refill: /function/PSORWRAP/REFILL
+    PartialFill: /function/PSORWRAP/PARTIAL
+
+sites:
+    - siteNumber: MDWS
+      name: MDWS
+      endpoint:
+        url: http://mdws2/mdws2.8.12/EmrSvc.asmx
+        debugMode: true
+        timeouts:
+            Query:
+                connectTimeout: 5000
+                requestTimeout: 10000
+            Fill:
+                connectTimeout: 5000
+                requestTimeout: 60000
+    - siteNumber: 2201
+      name: GoldDev1
+      userName: 1radiologist
+      password: radiologist1
+      endpoint:
+        url: http://54.204.44.77:8080/globals/rest/GOLDDEV
+        debugMode: true
+        timeouts:
+            Query:
+                connectTimeout: 5000
+                requestTimeout: 10000
+            Fill:
+                connectTimeout: 5000
+                requestTimeout: 60000
+    - siteNumber: 2202
+      name: GoldDev2
+      userName: 1radiologist
+      password: radiologist1
+      endpoint:
+        url: http://54.225.67.82:8080/globals/rest/GOLDDEV
+        debugMode: true
+        timeouts:
+            Query:
+                connectTimeout: 5000
+                requestTimeout: 10000
+            Fill:
+                connectTimeout: 5000
+                requestTimeout: 60000
+    - siteNumber: 2203
+      name: GoldDev3
+      userName: 1radiologist
+      password: radiologist1
+      endpoint:
+        url: http://23.23.163.89:8080/globals/rest/GOLDDEV
+        debugMode: true
+        timeouts:
+            Query:
+                connectTimeout: 5000
+                requestTimeout: 10000
+            Fill:
+                connectTimeout: 5000
+                requestTimeout: 60000
+    - siteNumber: 2204
+      name: GoldDev4
+      userName: 1radiologist
+      password: radiologist1
+      endpoint:
+        url: http://localhost:11010/test/nowhere
+        debugMode: true
+        timeouts:
+            Query:
+                connectTimeout: 5000
+                requestTimeout: 10000
+            Fill:
+                connectTimeout: 5000
+                requestTimeout: 60000
+    - siteNumber: 2301
+      name: GoldTest1
+      userName: 1radiologist
+      password: radiologist1
+      endpoint:
+        url: http://54.204.44.77:8080/globals/rest/GOLD
+        debugMode: true
+        timeouts:
+            Query:
+                connectTimeout: 5000
+                requestTimeout: 10000
+            Fill:
+                connectTimeout: 5000
+                requestTimeout: 60000
+    - siteNumber: 2302
+      name: GoldTest2
+      userName: 1radiologist
+      password: radiologist1
+      endpoint:
+        url: http://54.225.67.82:8080/globals/rest/GOLD
+        debugMode: true
+        timeouts:
+            Query:
+                connectTimeout: 5000
+                requestTimeout: 10000
+            Fill:
+                connectTimeout: 5000
+                requestTimeout: 60000
+    - siteNumber: 2303
+      name: GoldTest3
+      userName: 1radiologist
+      password: radiologist1
+      endpoint:
+        url: http://23.23.163.89:8080/globals/rest/GOLD
+        debugMode: true
+        timeouts:
+            Query:
+                connectTimeout: 5000
+                requestTimeout: 10000
+            Fill:
+                connectTimeout: 5000
+                requestTimeout: 60000
+    - siteNumber: 2304
+      name: GoldTest4
+      userName: 1radiologist
+      password: radiologist1
+      endpoint:
+        url: http://localhost:11010/test/nowhere
+        debugMode: true
+        timeouts:
+            Query:
+                connectTimeout: 5000
+                requestTimeout: 10000
+            Fill:
+                connectTimeout: 5000
+                requestTimeout: 60000
+     

@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>OneVA-Pharmacy</artifactId>
+        <groupId>com.qbase.onevapharm</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <artifactId>LLPRouter</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>LLPRouter</name>
+    <packaging>war</packaging>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses> 
+    <properties>
+        <jdkLevel>1.7</jdkLevel>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    </properties>
+    <build>
+        <finalName>LLPRouter</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+            </testResource>
+        </testResources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.17</version>
+                <configuration>
+                    <forkMode>once</forkMode>
+                    <argLine>-Xss1024k</argLine>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.openejb.maven</groupId>
+                <artifactId>tomee-maven-plugin</artifactId>
+                <version>${tomee.version}</version>
+                <configuration>
+                    <libs>
+                        <lib>javax.enterprise.concurrent:javax.enterprise.concurrent-api:1.0</lib>
+                        <lib>org.apache.openejb:openejb-concurrency-utilities-ee:${openejb.version}</lib>
+                    </libs>
+                    <tomeeClassifier>jaxrs</tomeeClassifier>
+                    <tomeeHttpPort>23085</tomeeHttpPort>
+                    <tomeeShutdownPort>23086</tomeeShutdownPort>
+                    <tomeeAjpPort>23087</tomeeAjpPort>
+                </configuration>
+            </plugin>    
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>buildnumber-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>create</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <doCheck>false</doCheck>
+                    <doUpdate>false</doUpdate>
+                    <shortRevisionLength>8</shortRevisionLength>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                        </manifest>
+                        <manifestEntries>
+                            <Implementation-Build>${buildNumber}</Implementation-Build>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>    
+    </build>
+    <dependencies>
+        <!-- Testing (list testing first in dependences (always) -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+       
+        <!-- JEE (provided) needs to be near bottom -->
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>${jee.version}</version>
+            <scope>provided</scope>
+        </dependency>
+  
+        <!-- Logging -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>log4j-over-slf4j</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
+
+        <!--  Google Guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>   
+        
+        <!-- HAPI -->
+        <dependency>
+            <groupId>ca.uhn.hapi</groupId>
+            <artifactId>hapi-base</artifactId>
+            <version>${hapi.version}</version>
+        </dependency>       
+        <dependency>
+            <groupId>ca.uhn.hapi</groupId>
+            <artifactId>hapi-structures-v251</artifactId>
+            <version>${hapi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ca.uhn.hapi</groupId>
+            <artifactId>hapi-hl7overhttp</artifactId>
+            <version>${hapi.version}</version>
+        </dependency>                  
+
+        <!-- Lollipop -->
+        <dependency>
+            <groupId>us.hornerscorners.lollipoprouter</groupId>
+            <artifactId>RoutingService</artifactId>
+            <version>${lollipoprouter.version}</version>
+        </dependency>
+    </dependencies>
+</project>
