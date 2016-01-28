@@ -1,0 +1,178 @@
+<?xml version="1.0" ?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://client.cds.med.va.gov" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="ClinicalDataServiceSynchronousInterface" targetNamespace="http://client.cds.med.va.gov">
+    <wsdl:message name="readClinicalData">
+        <wsdl:part name="in0" type="xsd:string"></wsdl:part>
+        <wsdl:part name="in1" type="xsd:string"></wsdl:part>
+        <wsdl:part name="in2" type="xsd:string"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="readClinicalDataResponse">
+        <wsdl:part name="out" type="xsd:string"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deleteClinicalData">
+        <wsdl:part name="in0" type="xsd:string"></wsdl:part>
+        <wsdl:part name="in1" type="xsd:string"></wsdl:part>
+        <wsdl:part name="in2" type="xsd:string"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deleteClinicalDataResponse">
+        <wsdl:part name="out" type="xsd:string"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="readClinicalData1">
+        <wsdl:part name="in0" type="xsd:string"></wsdl:part>
+        <wsdl:part name="in1" type="xsd:string"></wsdl:part>
+        <wsdl:part name="in2" type="xsd:string"></wsdl:part>
+        <wsdl:part name="in3" type="xsd:string"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="readClinicalData1Response">
+        <wsdl:part name="out" type="xsd:string"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="updateClinicalData">
+        <wsdl:part name="in0" type="xsd:string"></wsdl:part>
+        <wsdl:part name="in1" type="xsd:string"></wsdl:part>
+        <wsdl:part name="in2" type="xsd:string"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="updateClinicalDataResponse">
+        <wsdl:part name="out" type="xsd:string"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="isAlive"></wsdl:message>
+    <wsdl:message name="isAliveResponse">
+        <wsdl:part name="out" type="xsd:boolean"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createClinicalData1">
+        <wsdl:part name="in0" type="xsd:string"></wsdl:part>
+        <wsdl:part name="in1" type="xsd:string"></wsdl:part>
+        <wsdl:part name="in2" type="xsd:string"></wsdl:part>
+        <wsdl:part name="in3" type="xsd:boolean"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createClinicalData1Response">
+        <wsdl:part name="out" type="xsd:string"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createClinicalData">
+        <wsdl:part name="in0" type="xsd:string"></wsdl:part>
+        <wsdl:part name="in1" type="xsd:string"></wsdl:part>
+        <wsdl:part name="in2" type="xsd:string"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createClinicalDataResponse">
+        <wsdl:part name="out" type="xsd:string"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="appendClinicalData">
+        <wsdl:part name="in0" type="xsd:string"></wsdl:part>
+        <wsdl:part name="in1" type="xsd:string"></wsdl:part>
+        <wsdl:part name="in2" type="xsd:string"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="appendClinicalDataResponse">
+        <wsdl:part name="out" type="xsd:string"></wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="ClinicalDataServiceSynchronousInterface">
+        <wsdl:operation name="readClinicalData">
+            <wsdl:input message="tns:readClinicalData" name="readClinicalData"></wsdl:input>
+            <wsdl:output message="tns:readClinicalDataResponse" name="readClinicalDataResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteClinicalData">
+            <wsdl:input message="tns:deleteClinicalData" name="deleteClinicalData"></wsdl:input>
+            <wsdl:output message="tns:deleteClinicalDataResponse" name="deleteClinicalDataResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="readClinicalData1">
+            <wsdl:input message="tns:readClinicalData1" name="readClinicalData1"></wsdl:input>
+            <wsdl:output message="tns:readClinicalData1Response" name="readClinicalData1Response"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="updateClinicalData">
+            <wsdl:input message="tns:updateClinicalData" name="updateClinicalData"></wsdl:input>
+            <wsdl:output message="tns:updateClinicalDataResponse" name="updateClinicalDataResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="isAlive">
+            <wsdl:input message="tns:isAlive" name="isAlive"></wsdl:input>
+            <wsdl:output message="tns:isAliveResponse" name="isAliveResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createClinicalData1">
+            <wsdl:input message="tns:createClinicalData1" name="createClinicalData1"></wsdl:input>
+            <wsdl:output message="tns:createClinicalData1Response" name="createClinicalData1Response"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createClinicalData">
+            <wsdl:input message="tns:createClinicalData" name="createClinicalData"></wsdl:input>
+            <wsdl:output message="tns:createClinicalDataResponse" name="createClinicalDataResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="appendClinicalData">
+            <wsdl:input message="tns:appendClinicalData" name="appendClinicalData"></wsdl:input>
+            <wsdl:output message="tns:appendClinicalDataResponse" name="appendClinicalDataResponse"></wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ClinicalDataServiceSynchronousInterfaceSoapBinding" type="tns:ClinicalDataServiceSynchronousInterface">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"></soap:binding>
+        <wsdl:operation name="deleteClinicalData">
+            <soap:operation soapAction="" style="rpc"></soap:operation>
+            <wsdl:input name="deleteClinicalData">
+                <soap:body namespace="http://client.cds.med.va.gov" use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output name="deleteClinicalDataResponse">
+                <soap:body namespace="http://client.cds.med.va.gov" use="literal"></soap:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="readClinicalData">
+            <soap:operation soapAction="" style="rpc"></soap:operation>
+            <wsdl:input name="readClinicalData">
+                <soap:body namespace="http://client.cds.med.va.gov" use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output name="readClinicalDataResponse">
+                <soap:body namespace="http://client.cds.med.va.gov" use="literal"></soap:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="readClinicalData1">
+            <soap:operation soapAction="" style="rpc"></soap:operation>
+            <wsdl:input name="readClinicalData1">
+                <soap:body namespace="http://client.cds.med.va.gov" use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output name="readClinicalData1Response">
+                <soap:body namespace="http://client.cds.med.va.gov" use="literal"></soap:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="isAlive">
+            <soap:operation soapAction="" style="rpc"></soap:operation>
+            <wsdl:input name="isAlive">
+                <soap:body namespace="http://client.cds.med.va.gov" use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output name="isAliveResponse">
+                <soap:body namespace="http://client.cds.med.va.gov" use="literal"></soap:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="updateClinicalData">
+            <soap:operation soapAction="" style="rpc"></soap:operation>
+            <wsdl:input name="updateClinicalData">
+                <soap:body namespace="http://client.cds.med.va.gov" use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output name="updateClinicalDataResponse">
+                <soap:body namespace="http://client.cds.med.va.gov" use="literal"></soap:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createClinicalData1">
+            <soap:operation soapAction="" style="rpc"></soap:operation>
+            <wsdl:input name="createClinicalData1">
+                <soap:body namespace="http://client.cds.med.va.gov" use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output name="createClinicalData1Response">
+                <soap:body namespace="http://client.cds.med.va.gov" use="literal"></soap:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="appendClinicalData">
+            <soap:operation soapAction="" style="rpc"></soap:operation>
+            <wsdl:input name="appendClinicalData">
+                <soap:body namespace="http://client.cds.med.va.gov" use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output name="appendClinicalDataResponse">
+                <soap:body namespace="http://client.cds.med.va.gov" use="literal"></soap:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createClinicalData">
+            <soap:operation soapAction="" style="rpc"></soap:operation>
+            <wsdl:input name="createClinicalData">
+                <soap:body namespace="http://client.cds.med.va.gov" use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output name="createClinicalDataResponse">
+                <soap:body namespace="http://client.cds.med.va.gov" use="literal"></soap:body>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="ClinicalDataServiceSynchronousInterface">
+        <wsdl:port binding="tns:ClinicalDataServiceSynchronousInterfaceSoapBinding" name="ClinicalDataServiceSynchronousInterfaceHttpPort">
+            <soap:address location="http://hdrcluho-qi.fo-slc.med.va.gov:80/cds-wsclient/cds-service/"></soap:address>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

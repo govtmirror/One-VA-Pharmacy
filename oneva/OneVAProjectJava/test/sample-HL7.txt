@@ -1,0 +1,2 @@
+MSH|^~\&|TestSendingSystem||||20151209191100.85-0500||ADT^A01^ADT_A01|1|P|2.5.1|123
+PID|||123456||Doe^John

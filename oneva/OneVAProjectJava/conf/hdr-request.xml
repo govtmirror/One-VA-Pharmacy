@@ -1,0 +1,26 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://client.cds.med.va.gov">     
+    <soapenv:Header/>    
+		<soapenv:Body>       
+			<cli:readClinicalData1>          
+				<in0>PharmacyRead40010</in0>          
+				<in1>
+				   <![CDATA[
+				   		<?xml version="1.0" encoding="UTF-8"?>            
+						<filter:filter xmlns:filter="Filter" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" vhimVersion="Vhim_4_00">           
+						<filterId>RX_SINGLE_PATIENT_ALL_DATA_FILTER</filterId>
+							<patients>
+								<NationalId>${patientIcn}</NationalId>
+						  	</patients>
+						  	<entryPointFilter queryName="OutpatientMedicationPromiseQuery">
+								<domainEntryPoint>OutpatientMedicationPromise</domainEntryPoint>
+								<startDate>${startDate}</startDate>
+							 	<endDate>${endDate}</endDate>
+						  	</entryPointFilter>
+						</filter:filter>
+					  ]]>
+				</in1>          
+				<in2>RX_SINGLE_PATIENT_ALL_DATA_FILTER</in2>          
+				<in3>${requestId}</in3>
+        </cli:readClinicalData1>   
+    </soapenv:Body>
+</soapenv:Envelope>
