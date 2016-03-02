@@ -1,5 +1,8 @@
 package gov.va.oneva;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.ibm.broker.javacompute.MbJavaComputeNode;
 import com.ibm.broker.plugin.MbBLOB;
 import com.ibm.broker.plugin.MbElement;
@@ -15,9 +18,11 @@ import com.ibm.broker.plugin.MbUserException;
  * @version v1.0, 2015-01-13
  */
 public class VistaListener extends MbJavaComputeNode {
+	
+	private static final Logger log = LoggerFactory.getLogger(VistaListener.class);
 
 	public void evaluate(MbMessageAssembly inAssembly) throws MbException {
-		System.out.println("~~~~~~~ In VistaListener ~~~~~~~~~~");
+		log.debug("~~~~~~~ In VistaListener ~~~~~~~~~~");
 		MbOutputTerminal out = getOutputTerminal("out");
 		@SuppressWarnings("unused")
 		MbOutputTerminal alt = getOutputTerminal("alternate");
@@ -34,7 +39,7 @@ public class VistaListener extends MbJavaComputeNode {
 			String inMsg = Util.getString(inMessage);
 						
 			String hl7Msg = Util.removeLLPbytes(inMsg); 
-			System.out.println("===hl7 payload msg===\n" + hl7Msg);
+			log.debug("===hl7 payload msg===\n" + hl7Msg);
 			
 						
 			MbMessage outMessage = new MbMessage();

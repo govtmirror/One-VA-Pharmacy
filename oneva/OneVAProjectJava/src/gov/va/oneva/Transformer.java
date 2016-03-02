@@ -10,6 +10,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang.time.FastDateFormat;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import ca.uhn.hl7v2.HL7Exception;
 import ca.uhn.hl7v2.model.GenericPrimitive;
@@ -21,6 +23,9 @@ import ca.uhn.hl7v2.model.v251.segment.RDF;
 import ca.uhn.hl7v2.model.v251.segment.RDT;
 
 public class Transformer {
+	
+	private static final Logger log = LoggerFactory.getLogger(Transformer.class);
+	
 	private static final String[] labels = { "Site Number", "Rx Number", "Drug Name", "Quantity", "Refills", "Days Supply", "Expiration Date", "Issue Date",
 			"Stop Date", "Last Fill Date", "Sig", "Detail" };
 
@@ -111,7 +116,7 @@ public class Transformer {
 	 * OutpatientMedicationPromise maps to one RDT row. Need to confirm this
 	 * with Narasa Susarla, Program Architect at VA.
 	 * 
-	 * I confirmed with Naras that one promise maps to one prescription.
+	 * I confirmed with Narasa that one promise maps to one prescription.
 	 */
 	private static void addPrescriptionRow(RDT rdt, OutpatientMedicationPromise rx) throws HL7Exception {
 		// Site Number

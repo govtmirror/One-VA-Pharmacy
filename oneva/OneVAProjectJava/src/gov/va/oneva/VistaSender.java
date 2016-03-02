@@ -1,5 +1,8 @@
 package gov.va.oneva;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.ibm.broker.javacompute.MbJavaComputeNode;
 import com.ibm.broker.plugin.MbBLOB;
 import com.ibm.broker.plugin.MbElement;
@@ -17,10 +20,12 @@ import com.ibm.broker.plugin.MbUserException;
  */
 
 public class VistaSender extends MbJavaComputeNode {
+	
+	private static final Logger log = LoggerFactory.getLogger(VistaSender.class);
 
 	public void evaluate(MbMessageAssembly inAssembly) throws MbException {
 				
-		System.out.println("++++++>Inside VistaSender");
+		log.debug("++++++>Inside VistaSender");
 				
 		MbOutputTerminal out = getOutputTerminal("out");
 		MbOutputTerminal alt = getOutputTerminal("alternate");
@@ -35,7 +40,7 @@ public class VistaSender extends MbJavaComputeNode {
 			// Add user code below
 
 			String inMsg = Util.getString(inMessage);			
-			System.out.println("===> Results HL7 to be sent to VistA ===>" + inMsg + "]");
+			log.debug("===> Results HL7 to be sent to VistA ===>" + inMsg + "]");
 			
 			String outMsg = Util.addLLPbytes(inMsg) ;
 			

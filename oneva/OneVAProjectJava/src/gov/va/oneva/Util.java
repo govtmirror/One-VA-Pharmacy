@@ -10,6 +10,8 @@ import java.util.Date;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.FastDateFormat;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import ca.uhn.hl7v2.DefaultHapiContext;
 import ca.uhn.hl7v2.HL7Exception;
@@ -33,7 +35,7 @@ import com.ibm.broker.plugin.MbMessage;
  */
 public class Util {
 
-	// public static Logger rootLogger = null;
+	private static final Logger log = LoggerFactory.getLogger(Util.class);
 
 	public final static char VT = 0x0b;
 	public final static char FS = 0x1c;
@@ -150,13 +152,13 @@ public class Util {
 			terser = new Terser((Message) hMsg);
 		}
 		else{
-			System.out.println("msg is not an HL7 message");
+			log.debug("msg is not an HL7 message");
 		}
 	
 		String receivingFacility = terser.get("/MSH-6");
-		System.out.println("===>MSH-6=" + receivingFacility);
+		log.debug("===>MSH-6=" + receivingFacility);
 		String msgType = terser.get("/MSH-9-2");
-		System.out.println("===>MSH-9=" + msgType);
+		log.debug("===>MSH-9=" + msgType);
 		return (receivingFacility != null ? receivingFacility : "") ;
 	}
 	

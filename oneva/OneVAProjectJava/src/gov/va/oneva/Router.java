@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import ca.uhn.hl7v2.util.Terser;
 
@@ -30,6 +32,8 @@ import com.ibm.broker.plugin.MbUserException;
 
 public class Router extends MbJavaComputeNode {
 
+	private static final Logger log = LoggerFactory.getLogger(Router.class);
+	
 	private Map<String,Host> hosts;
 	
 	@Override
@@ -46,7 +50,7 @@ public class Router extends MbJavaComputeNode {
 	public void evaluate(MbMessageAssembly inAssembly) throws MbException {
 		
 		
-		System.out.println("++++++ Inside Router+++++++++++++");
+		log.debug("++++++ Inside Router+++++++++++++");
 		
 		MbOutputTerminal out = getOutputTerminal("out");
 		@SuppressWarnings("unused")
@@ -62,9 +66,9 @@ public class Router extends MbJavaComputeNode {
 			// Add user code below
 
 					
-			System.out.println("++++++ Router got a message!");
+			log.debug("++++++ Router got a message!");
 			String inMsg = Util.getString(inMessage);			
-			System.out.println(inMsg);
+			log.debug(inMsg);
 		
 			Terser terser = Util.getTerser(inMsg);
 			String msgType = terser.get("/MSH-9-3");
@@ -93,9 +97,9 @@ public class Router extends MbJavaComputeNode {
 			else{
 				// send message to destination Vista and send response to outputTerminal
 				String receivingFacility = terser.get("/MSH-6");
-				System.out.println("===>MSH-6=" + receivingFacility);
+				log.debug("===>MSH-6=" + receivingFacility);
 				String subMsgType = terser.get("/MSH-9-2");
-				System.out.println("===>MSH-9=" + subMsgType);
+				log.debug("===>MSH-9=" + subMsgType);
 				
 				if (StringUtils.isNotBlank(receivingFacility)) {
 					Host host = hosts.get(receivingFacility);
@@ -105,7 +109,7 @@ public class Router extends MbJavaComputeNode {
 					}
 				} 
 				else {
-					System.out.println("===>No routing information found. MSH-6 is empty");
+					log.debug("===>No routing information found. MSH-6 is empty");
 				}				
 			}	
 			

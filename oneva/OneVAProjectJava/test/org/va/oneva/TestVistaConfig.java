@@ -12,8 +12,12 @@ import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.EnvironmentConfiguration;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class TestVistaConfig {
+	
+	private static final Logger log = LoggerFactory.getLogger(TestVistaConfig.class);
 	
 	private static Configuration config;
 	
@@ -25,6 +29,7 @@ public class TestVistaConfig {
 	@Test
 	public void testGetConfig() throws IOException, ConfigurationException {
 		Map<String,Host> hosts = OneVaConfig.getHosts();
+		log.info(hosts.size() + " hosts found");
 		assertTrue(hosts != null);
 		assertTrue(hosts.size() > 0);
 	}
@@ -44,8 +49,8 @@ public class TestVistaConfig {
 	
 	@Test
 	public void testEnvVar() throws Exception{
-		System.out.println("tier = " + config.getString("tier"));
-		System.out.println("hosts.filename = " + config.getString("hosts.filename"));
+		log.info("tier = " + config.getString("tier"));
+		log.info("hosts.filename = " + config.getString("hosts.filename"));
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
@@ -56,13 +61,12 @@ public class TestVistaConfig {
 	@Test
 	public void testTierConfig() throws ConfigurationException{
 		Configuration envConfig = new EnvironmentConfiguration();
-		System.out.println("ONEVA_TIER = " + envConfig.getString("ONEVA_TIER"));
+		log.info("ONEVA_TIER = " + envConfig.getString("ONEVA_TIER"));
 	}
 	
 	@Test
 	public void testHdrTemplate() throws Exception{
 		String template = OneVaConfig.getHdrRequestTemplate();
-		System.out.println(template);
 		assertTrue("must have a template", template != null);
 	}
 

@@ -7,6 +7,8 @@ import java.net.Socket;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import ca.uhn.hl7v2.DefaultHapiContext;
 import ca.uhn.hl7v2.HL7Exception;
@@ -18,6 +20,9 @@ import ca.uhn.hl7v2.model.Message;
 import ca.uhn.hl7v2.parser.Parser;
 
 public class MLLPClient {
+	
+	private static final Logger log = LoggerFactory.getLogger(MLLPClient.class);
+	
 	private Host host;
 	boolean useTls = false; // Should we use TLS/SSL?
 
@@ -51,7 +56,7 @@ public class MLLPClient {
 		try {
 			// connect to the host
 			context = new DefaultHapiContext();
-			System.out.println(host);
+			log.debug(host.toString());
 			connection = context.newClient(host.getIp(), host.getPort(), useTls);			
 			// parse the HL7 message to send
 			Parser p = context.getPipeParser();
@@ -91,7 +96,7 @@ public class MLLPClient {
 			in.read(response);
 
 			String vistaResponse = StringUtils.trimToEmpty(new String(response));
-			System.out.println("TCP response: " + vistaResponse);
+			log.debug("TCP response: " + vistaResponse);
 			return vistaResponse;
 		} catch (Exception e) {
 			e.printStackTrace();

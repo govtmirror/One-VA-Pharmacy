@@ -1,5 +1,8 @@
 package gov.va.oneva;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.ibm.broker.javacompute.MbJavaComputeNode;
 import com.ibm.broker.plugin.MbBLOB;
 import com.ibm.broker.plugin.MbElement;
@@ -11,8 +14,10 @@ import com.ibm.broker.plugin.MbUserException;
 
 public class GenerateACK extends MbJavaComputeNode {
 
+	private static final Logger log = LoggerFactory.getLogger(GenerateACK.class);
+	
 	public void evaluate(MbMessageAssembly inAssembly) throws MbException {
-		System.out.println("#########  In GenerateACK #############");
+		log.debug("#########  In GenerateACK #############");
 		MbOutputTerminal out = getOutputTerminal("out");
 		@SuppressWarnings("unused")
 		MbOutputTerminal alt = getOutputTerminal("alternate");
@@ -27,7 +32,7 @@ public class GenerateACK extends MbJavaComputeNode {
 			String inMsg = Util.getString(inMessage);			
 				
 			String hl7Msg = Util.removeLLPbytes(inMsg); 
-			System.out.println("===hl7 payload msg===\n" + hl7Msg);			
+			log.debug("===hl7 payload msg===\n" + hl7Msg);			
 			
 			MbMessage outMessage = new MbMessage();
 			MbElement outRoot = outMessage.getRootElement();
@@ -36,7 +41,7 @@ public class GenerateACK extends MbJavaComputeNode {
 			String ack = Util.generateACK(hl7Msg);
 			
 			String ackllp = Util.addLLPbytes(ack);
-			System.out.println("===ack llp msg===\n" + ackllp);			
+			log.debug("===ack llp msg===\n" + ackllp);			
 			
 			@SuppressWarnings("unused")
 			MbElement outBody = outParser.createElementAsLastChild(MbElement.TYPE_NAME_VALUE, "BLOB", ackllp.getBytes());
